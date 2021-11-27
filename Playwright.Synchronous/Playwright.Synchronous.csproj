@@ -12,6 +12,8 @@
 	  <RepositoryUrl>https://github.com/evgenynazarchuk/Playwright.Synchronous</RepositoryUrl>
 	  <Copyright>Copyright © Evgeny Nazarchuk</Copyright>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <Title>Playwright.Synchronous</Title>
+	  <Description>Synchronous methods for Playwright</Description>
 	  
   </PropertyGroup>
 
