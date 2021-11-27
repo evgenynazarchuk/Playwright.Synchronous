@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 
 	  <OutputType>Library</OutputType>
-	  <Version>1.17.0.1</Version>
+	  <Version>1.17.0.2</Version>
 	  <Authors>Evgeny Nazarchuk</Authors>
 	  <PackageProjectUrl>https://github.com/evgenynazarchuk/Playwright.Synchronous/wiki</PackageProjectUrl>
 	  <RepositoryUrl>https://github.com/evgenynazarchuk/Playwright.Synchronous</RepositoryUrl>
