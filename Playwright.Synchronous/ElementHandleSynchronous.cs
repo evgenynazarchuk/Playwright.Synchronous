@@ -277,4 +277,12 @@ public static class ElementHandleSynchronous
     {
         return element.EvalOnSelectorAsync(selector, expression, arg).GetAwaiter().GetResult();
     }
+
+    public static IElementHandle FindElement(this IElementHandle elementHandle, string selector)
+    {
+        var element = elementHandle.QuerySelector(selector);
+        if (element is null) throw new ApplicationException($"Element not found. Selector:\n{selector}");
+
+        return element;
+    }
 }

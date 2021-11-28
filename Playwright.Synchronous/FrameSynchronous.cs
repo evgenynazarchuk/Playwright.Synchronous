@@ -347,4 +347,12 @@ public static class FrameSynchronous
     {
         return frame.EvalOnSelectorAllAsync(selector, expression, arg).GetAwaiter().GetResult();
     }
+
+    public static IElementHandle FindElement(this IFrame frame, string selector, FrameQuerySelectorOptions? options = null)
+    {
+        var element = frame.QuerySelector(selector, options);
+        if (element is null) throw new ApplicationException($"Element not found. Selector:\n{selector}");
+
+        return element;
+    }
 }
