@@ -28,28 +28,33 @@ namespace Playwright.Synchronous;
 
 public static class KeyboardSynchronous
 {
-    public static void Down(this IKeyboard keyboard, string key)
+    public static IKeyboard Down(this IKeyboard keyboard, string key)
     {
         keyboard.DownAsync(key).GetAwaiter().GetResult();
+        return keyboard;
     }
 
-    public static void InsertText(this IKeyboard keyboard, string text)
+    public static IKeyboard InsertText(this IKeyboard keyboard, string text)
     {
         keyboard.InsertTextAsync(text).GetAwaiter().GetResult();
+        return keyboard;
     }
 
-    public static void Press(this IKeyboard keyboard, string key, KeyboardPressOptions? options = default)
+    public static IKeyboard Press(this IKeyboard keyboard, string key, KeyboardPressOptions? options = default)
     {
         keyboard.PressAsync(key, options).GetAwaiter().GetResult();
+        return keyboard;
     }
 
-    public static void Type(this IKeyboard keyboard, string text, KeyboardTypeOptions? options = default)
+    public static IKeyboard Type(this IKeyboard keyboard, string text, KeyboardTypeOptions? options = default)
     {
         keyboard.TypeAsync(text, options).GetAwaiter().GetResult();
+        return keyboard;
     }
 
-    public static void Up(this IKeyboard keyboard, string key)
+    public static IKeyboard Up(this IKeyboard keyboard, string key)
     {
         keyboard.UpAsync(key).GetAwaiter().GetResult();
+        return keyboard;
     }
 }

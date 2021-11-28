@@ -34,14 +34,16 @@ public static class ElementHandleSynchronous
         return element.BoundingBoxAsync().GetAwaiter().GetResult();
     }
 
-    public static void Check(this IElementHandle element, ElementHandleCheckOptions? options = null)
+    public static IElementHandle Check(this IElementHandle element, ElementHandleCheckOptions? options = null)
     {
         element.CheckAsync(options).GetAwaiter().GetResult();
+        return element;
     }
 
-    public static void Click(this IElementHandle element, ElementHandleClickOptions? options = null)
+    public static IElementHandle Click(this IElementHandle element, ElementHandleClickOptions? options = null)
     {
         element.ClickAsync(options).GetAwaiter().GetResult();
+        return element;
     }
 
     public static IFrame? ContentFrame(this IElementHandle element)
@@ -49,14 +51,16 @@ public static class ElementHandleSynchronous
         return element.ContentFrameAsync().GetAwaiter().GetResult();
     }
 
-    public static void DblClick(this IElementHandle element, ElementHandleDblClickOptions? options = null)
+    public static IElementHandle DblClick(this IElementHandle element, ElementHandleDblClickOptions? options = null)
     {
         element.DblClickAsync(options).GetAwaiter().GetResult();
+        return element;
     }
 
-    public static void DispatchEvent(this IElementHandle element, string type, object? eventInit = null)
+    public static IElementHandle DispatchEvent(this IElementHandle element, string type, object? eventInit = null)
     {
         element.DispatchEventAsync(type, eventInit).GetAwaiter().GetResult();
+        return element;
     }
 
     public static T EvalOnSelector<T>(this IElementHandle element, string selector, string expression, object? arg = null)
@@ -69,14 +73,16 @@ public static class ElementHandleSynchronous
         return element.EvalOnSelectorAllAsync<T>(selector, expression, arg).GetAwaiter().GetResult();
     }
 
-    public static void Fill(this IElementHandle element, string value, ElementHandleFillOptions? options = null)
+    public static IElementHandle Fill(this IElementHandle element, string value, ElementHandleFillOptions? options = null)
     {
         element.FillAsync(value, options).GetAwaiter().GetResult();
+        return element;
     }
 
-    public static void Focus(this IElementHandle element)
+    public static IElementHandle Focus(this IElementHandle element)
     {
         element.FocusAsync().GetAwaiter().GetResult();
+        return element;
     }
 
     public static string? GetAttribute(this IElementHandle element, string name)
@@ -84,9 +90,10 @@ public static class ElementHandleSynchronous
         return element.GetAttributeAsync(name).GetAwaiter().GetResult();
     }
 
-    public static void Hover(this IElementHandle element, ElementHandleHoverOptions? options = null)
+    public static IElementHandle Hover(this IElementHandle element, ElementHandleHoverOptions? options = null)
     {
         element.HoverAsync(options).GetAwaiter().GetResult();
+        return element;
     }
 
     public static string InnerHTML(this IElementHandle element)
@@ -139,9 +146,10 @@ public static class ElementHandleSynchronous
         return element.OwnerFrameAsync().GetAwaiter().GetResult();
     }
 
-    public static void Press(this IElementHandle element, string key, ElementHandlePressOptions? options = null)
+    public static IElementHandle Press(this IElementHandle element, string key, ElementHandlePressOptions? options = null)
     {
         element.PressAsync(key, options).GetAwaiter().GetResult();
+        return element;
     }
 
     public static IElementHandle? QuerySelector(this IElementHandle element, string selector)
@@ -159,9 +167,10 @@ public static class ElementHandleSynchronous
         return element.ScreenshotAsync(options).GetAwaiter().GetResult();
     }
 
-    public static void ScrollIntoViewIfNeeded(this IElementHandle element, ElementHandleScrollIntoViewIfNeededOptions? options = null)
+    public static IElementHandle ScrollIntoViewIfNeeded(this IElementHandle element, ElementHandleScrollIntoViewIfNeededOptions? options = null)
     {
         element.ScrollIntoViewIfNeededAsync(options).GetAwaiter().GetResult();
+        return element;
     }
 
     public static IReadOnlyList<string> SelectOption(this IElementHandle element, string values, ElementHandleSelectOptionOptions? options = null)
@@ -194,39 +203,46 @@ public static class ElementHandleSynchronous
         return element.SelectOptionAsync(values, options).GetAwaiter().GetResult();
     }
 
-    public static void SelectText(this IElementHandle element, ElementHandleSelectTextOptions? options = null)
+    public static IElementHandle SelectText(this IElementHandle element, ElementHandleSelectTextOptions? options = null)
     {
         element.SelectTextAsync(options).GetAwaiter().GetResult();
+        return element;
     }
 
-    public static void SetChecked(this IElementHandle element, bool checkedState, ElementHandleSetCheckedOptions? options = null)
+    public static IElementHandle SetChecked(this IElementHandle element, bool checkedState, ElementHandleSetCheckedOptions? options = null)
     {
         element.SetCheckedAsync(checkedState, options).GetAwaiter().GetResult();
+        return element;
     }
 
-    public static void SetInputFiles(this IElementHandle element, string files, ElementHandleSetInputFilesOptions? options = null)
+    public static IElementHandle SetInputFiles(this IElementHandle element, string files, ElementHandleSetInputFilesOptions? options = null)
     {
         element.SetInputFilesAsync(files, options).GetAwaiter().GetResult();
+        return element;
     }
 
-    public static void SetInputFiles(this IElementHandle element, IEnumerable<string> files, ElementHandleSetInputFilesOptions? options = null)
+    public static IElementHandle SetInputFiles(this IElementHandle element, IEnumerable<string> files, ElementHandleSetInputFilesOptions? options = null)
     {
         element.SetInputFilesAsync(files, options).GetAwaiter().GetResult();
+        return element;
     }
 
-    public static void SetInputFiles(this IElementHandle element, FilePayload files, ElementHandleSetInputFilesOptions? options = null)
+    public static IElementHandle SetInputFiles(this IElementHandle element, FilePayload files, ElementHandleSetInputFilesOptions? options = null)
     {
         element.SetInputFilesAsync(files, options).GetAwaiter().GetResult();
+        return element;
     }
 
-    public static void SetInputFiles(this IElementHandle element, IEnumerable<FilePayload> files, ElementHandleSetInputFilesOptions? options = null)
+    public static IElementHandle SetInputFiles(this IElementHandle element, IEnumerable<FilePayload> files, ElementHandleSetInputFilesOptions? options = null)
     {
         element.SetInputFilesAsync(files, options).GetAwaiter().GetResult();
+        return element;
     }
 
-    public static void Tap(this IElementHandle element, ElementHandleTapOptions? options = null)
+    public static IElementHandle Tap(this IElementHandle element, ElementHandleTapOptions? options = null)
     {
         element.TapAsync(options).GetAwaiter().GetResult();
+        return element;
     }
 
     public static string? TextContent(this IElementHandle element)
@@ -234,19 +250,22 @@ public static class ElementHandleSynchronous
         return element.TextContentAsync().GetAwaiter().GetResult();
     }
 
-    public static void Type(this IElementHandle element, string text, ElementHandleTypeOptions? options = null)
+    public static IElementHandle Type(this IElementHandle element, string text, ElementHandleTypeOptions? options = null)
     {
         element.TypeAsync(text, options).GetAwaiter().GetResult();
+        return element;
     }
 
-    public static void Uncheck(this IElementHandle element, ElementHandleUncheckOptions? options = null)
+    public static IElementHandle Uncheck(this IElementHandle element, ElementHandleUncheckOptions? options = null)
     {
         element.UncheckAsync(options).GetAwaiter().GetResult();
+        return element;
     }
 
-    public static void WaitForElementState(this IElementHandle element, ElementState state, ElementHandleWaitForElementStateOptions? options = null)
+    public static IElementHandle WaitForElementState(this IElementHandle element, ElementState state, ElementHandleWaitForElementStateOptions? options = null)
     {
         element.WaitForElementStateAsync(state, options).GetAwaiter().GetResult();
+        return element;
     }
 
     public static IElementHandle? WaitForSelector(this IElementHandle element, string selector, ElementHandleWaitForSelectorOptions? options = null)

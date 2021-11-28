@@ -28,33 +28,39 @@ namespace Playwright.Synchronous;
 
 public static class MouseSynchronous
 {
-    public static void Click(this IMouse mouse, float x, float y, MouseClickOptions? options = default)
+    public static IMouse Click(this IMouse mouse, float x, float y, MouseClickOptions? options = default)
     {
         mouse.ClickAsync(x, y, options).GetAwaiter().GetResult();
+        return mouse;
     }
 
-    public static void DblClick(this IMouse mouse, float x, float y, MouseDblClickOptions? options = default)
+    public static IMouse DblClick(this IMouse mouse, float x, float y, MouseDblClickOptions? options = default)
     {
         mouse.DblClickAsync(x, y, options).GetAwaiter().GetResult();
+        return mouse;
     }
 
-    public static void Down(this IMouse mouse, MouseDownOptions? options = default)
+    public static IMouse Down(this IMouse mouse, MouseDownOptions? options = default)
     {
         mouse.DownAsync(options).GetAwaiter().GetResult();
+        return mouse;
     }
 
-    public static void Move(this IMouse mouse, float x, float y, MouseMoveOptions? options = default)
+    public static IMouse Move(this IMouse mouse, float x, float y, MouseMoveOptions? options = default)
     {
         mouse.MoveAsync(x, y, options).GetAwaiter().GetResult();
+        return mouse;
     }
 
-    public static void Up(this IMouse mouse, MouseUpOptions? options = default)
+    public static IMouse Up(this IMouse mouse, MouseUpOptions? options = default)
     {
         mouse.UpAsync(options).GetAwaiter().GetResult();
+        return mouse;
     }
 
-    public static void Wheel(this IMouse mouse, float deltaX, float deltaY)
+    public static IMouse Wheel(this IMouse mouse, float deltaX, float deltaY)
     {
         mouse.WheelAsync(deltaX, deltaY).GetAwaiter().GetResult();
+        return mouse;
     }
 }

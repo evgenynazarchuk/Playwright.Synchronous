@@ -28,8 +28,9 @@ namespace Playwright.Synchronous;
 
 public static class SelectorsSynchronous
 {
-    public static void Register(this ISelectors selectors, string name, SelectorsRegisterOptions? options = null)
+    public static ISelectors Register(this ISelectors selectors, string name, SelectorsRegisterOptions? options = null)
     {
         selectors.RegisterAsync(name, options).GetAwaiter().GetResult();
+        return selectors;
     }
 }

@@ -28,9 +28,15 @@ namespace Playwright.Synchronous;
 
 public static class BrowserSynchronous
 {
-    public static void Close(this IBrowser browser)
+    public static IBrowser Close(this IBrowser browser)
     {
         browser.CloseAsync().GetAwaiter().GetResult();
+        return browser;
+    }
+
+    public static void Dispose(this IBrowser browser)
+    {
+        browser.DisposeAsync().GetAwaiter().GetResult();
     }
 
     public static IBrowserContext NewContext(this IBrowser browser, BrowserNewContextOptions? options = null)

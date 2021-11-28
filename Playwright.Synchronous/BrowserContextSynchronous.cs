@@ -29,29 +29,34 @@ namespace Playwright.Synchronous;
 
 public static class BrowserContextSynchronous
 {
-    public static void AddCookies(this IBrowserContext browserContext, IEnumerable<Cookie> cookies)
+    public static IBrowserContext AddCookies(this IBrowserContext browserContext, IEnumerable<Cookie> cookies)
     {
         browserContext.AddCookiesAsync(cookies).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void AddInitScript(this IBrowserContext browserContext, string? script = null, string? scriptPath = null)
+    public static IBrowserContext AddInitScript(this IBrowserContext browserContext, string? script = null, string? scriptPath = null)
     {
         browserContext.AddInitScriptAsync(script, scriptPath).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void ClearCookies(this IBrowserContext browserContext)
+    public static IBrowserContext ClearCookies(this IBrowserContext browserContext)
     {
         browserContext.ClearCookiesAsync().GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void ClearPermissions(this IBrowserContext browserContext)
+    public static IBrowserContext ClearPermissions(this IBrowserContext browserContext)
     {
         browserContext.ClearPermissionsAsync().GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void Close(this IBrowserContext browserContext)
+    public static IBrowserContext Close(this IBrowserContext browserContext)
     {
         browserContext.CloseAsync().GetAwaiter().GetResult();
+        return browserContext;
     }
 
     public static IReadOnlyList<BrowserContextCookiesResult> Cookies(this IBrowserContext browserContext, IEnumerable<string>? urls = null)
@@ -59,89 +64,106 @@ public static class BrowserContextSynchronous
         return browserContext.CookiesAsync(urls).GetAwaiter().GetResult();
     }
 
-    public static void ExposeBinding(this IBrowserContext browserContext, string name, Action callback, BrowserContextExposeBindingOptions? options = null)
+    public static IBrowserContext ExposeBinding(this IBrowserContext browserContext, string name, Action callback, BrowserContextExposeBindingOptions? options = null)
     {
         browserContext.ExposeBindingAsync(name, callback, options).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void ExposeBinding(this IBrowserContext browserContext, string name, Action<BindingSource> callback)
+    public static IBrowserContext ExposeBinding(this IBrowserContext browserContext, string name, Action<BindingSource> callback)
     {
         browserContext.ExposeBindingAsync(name, callback).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void ExposeBinding<T>(this IBrowserContext browserContext, string name, Action<BindingSource, T> callback)
+    public static IBrowserContext ExposeBinding<T>(this IBrowserContext browserContext, string name, Action<BindingSource, T> callback)
     {
         browserContext.ExposeBindingAsync<T>(name, callback).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void ExposeBinding<TResult>(this IBrowserContext browserContext, string name, Func<BindingSource, TResult> callback)
+    public static IBrowserContext ExposeBinding<TResult>(this IBrowserContext browserContext, string name, Func<BindingSource, TResult> callback)
     {
         browserContext.ExposeBindingAsync<TResult>(name, callback).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void ExposeBinding<TResult>(this IBrowserContext browserContext, string name, Func<BindingSource, IJSHandle, TResult> callback)
+    public static IBrowserContext ExposeBinding<TResult>(this IBrowserContext browserContext, string name, Func<BindingSource, IJSHandle, TResult> callback)
     {
         browserContext.ExposeBindingAsync<TResult>(name, callback).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void ExposeBinding<T, TResult>(this IBrowserContext browserContext, string name, Func<BindingSource, T, TResult> callback)
+    public static IBrowserContext ExposeBinding<T, TResult>(this IBrowserContext browserContext, string name, Func<BindingSource, T, TResult> callback)
     {
         browserContext.ExposeBindingAsync<T, TResult>(name, callback).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void ExposeBinding<T1, T2, TResult>(this IBrowserContext browserContext, string name, Func<BindingSource, T1, T2, TResult> callback)
+    public static IBrowserContext ExposeBinding<T1, T2, TResult>(this IBrowserContext browserContext, string name, Func<BindingSource, T1, T2, TResult> callback)
     {
         browserContext.ExposeBindingAsync<T1, T2, TResult>(name, callback).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void ExposeBinding<T1, T2, T3, TResult>(this IBrowserContext browserContext, string name, Func<BindingSource, T1, T2, T3, TResult> callback)
+    public static IBrowserContext ExposeBinding<T1, T2, T3, TResult>(this IBrowserContext browserContext, string name, Func<BindingSource, T1, T2, T3, TResult> callback)
     {
         browserContext.ExposeBindingAsync<T1, T2, T3, TResult>(name, callback).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void ExposeBinding<T1, T2, T3, T4, TResult>(this IBrowserContext browserContext, string name, Func<BindingSource, T1, T2, T3, T4, TResult> callback)
+    public static IBrowserContext ExposeBinding<T1, T2, T3, T4, TResult>(this IBrowserContext browserContext, string name, Func<BindingSource, T1, T2, T3, T4, TResult> callback)
     {
         browserContext.ExposeBindingAsync<T1, T2, T3, T4, TResult>(name, callback).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void ExposeFunction(this IBrowserContext browserContext, string name, Action callback)
+    public static IBrowserContext ExposeFunction(this IBrowserContext browserContext, string name, Action callback)
     {
         browserContext.ExposeFunctionAsync(name, callback).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void ExposeFunction<T>(this IBrowserContext browserContext, string name, Action<T> callback)
+    public static IBrowserContext ExposeFunction<T>(this IBrowserContext browserContext, string name, Action<T> callback)
     {
         browserContext.ExposeFunctionAsync<T>(name, callback).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void ExposeFunction<TResult>(this IBrowserContext browserContext, string name, Func<TResult> callback)
+    public static IBrowserContext ExposeFunction<TResult>(this IBrowserContext browserContext, string name, Func<TResult> callback)
     {
         browserContext.ExposeFunctionAsync<TResult>(name, callback).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void ExposeFunction<T, TResult>(this IBrowserContext browserContext, string name, Func<T, TResult> callback)
+    public static IBrowserContext ExposeFunction<T, TResult>(this IBrowserContext browserContext, string name, Func<T, TResult> callback)
     {
         browserContext.ExposeFunctionAsync<T, TResult>(name, callback).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void ExposeFunction<T1, T2, TResult>(this IBrowserContext browserContext, string name, Func<T1, T2, TResult> callback)
+    public static IBrowserContext ExposeFunction<T1, T2, TResult>(this IBrowserContext browserContext, string name, Func<T1, T2, TResult> callback)
     {
         browserContext.ExposeFunctionAsync<T1, T2, TResult>(name, callback).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void ExposeFunction<T1, T2, T3, TResult>(this IBrowserContext browserContext, string name, Func<T1, T2, T3, TResult> callback)
+    public static IBrowserContext ExposeFunction<T1, T2, T3, TResult>(this IBrowserContext browserContext, string name, Func<T1, T2, T3, TResult> callback)
     {
         browserContext.ExposeFunctionAsync<T1, T2, T3, TResult>(name, callback).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void ExposeFunction<T1, T2, T3, T4, TResult>(this IBrowserContext browserContext, string name, Func<T1, T2, T3, T4, TResult> callback)
+    public static IBrowserContext ExposeFunction<T1, T2, T3, T4, TResult>(this IBrowserContext browserContext, string name, Func<T1, T2, T3, T4, TResult> callback)
     {
         browserContext.ExposeFunctionAsync<T1, T2, T3, T4, TResult>(name, callback).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void GrantPermissions(this IBrowserContext browserContext, IEnumerable<string> permissions, BrowserContextGrantPermissionsOptions? options = null)
+    public static IBrowserContext GrantPermissions(this IBrowserContext browserContext, IEnumerable<string> permissions, BrowserContextGrantPermissionsOptions? options = null)
     {
         browserContext.GrantPermissionsAsync(permissions, options).GetAwaiter().GetResult();
+        return browserContext;
     }
 
     public static IPage NewPage(this IBrowserContext browserContext)
@@ -149,34 +171,40 @@ public static class BrowserContextSynchronous
         return browserContext.NewPageAsync().GetAwaiter().GetResult();
     }
 
-    public static void Route(this IBrowserContext browserContext, string url, Action<IRoute> handler, BrowserContextRouteOptions? options = null)
+    public static IBrowserContext Route(this IBrowserContext browserContext, string url, Action<IRoute> handler, BrowserContextRouteOptions? options = null)
     {
         browserContext.RouteAsync(url, handler, options).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void Route(this IBrowserContext browserContext, Regex url, Action<IRoute> handler, BrowserContextRouteOptions? options = null)
+    public static IBrowserContext Route(this IBrowserContext browserContext, Regex url, Action<IRoute> handler, BrowserContextRouteOptions? options = null)
     {
         browserContext.RouteAsync(url, handler, options).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void Route(this IBrowserContext browserContext, Func<string, bool> url, Action<IRoute> handler, BrowserContextRouteOptions? options = null)
+    public static IBrowserContext Route(this IBrowserContext browserContext, Func<string, bool> url, Action<IRoute> handler, BrowserContextRouteOptions? options = null)
     {
         browserContext.RouteAsync(url, handler, options).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void SetExtraHTTPHeaders(this IBrowserContext browserContext, IEnumerable<KeyValuePair<string, string>> headers)
+    public static IBrowserContext SetExtraHTTPHeaders(this IBrowserContext browserContext, IEnumerable<KeyValuePair<string, string>> headers)
     {
         browserContext.SetExtraHTTPHeadersAsync(headers).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void SetGeolocation(this IBrowserContext browserContext, Geolocation? geolocation)
+    public static IBrowserContext SetGeolocation(this IBrowserContext browserContext, Geolocation? geolocation)
     {
         browserContext.SetGeolocationAsync(geolocation).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void SetOffline(this IBrowserContext browserContext, bool offline)
+    public static IBrowserContext SetOffline(this IBrowserContext browserContext, bool offline)
     {
         browserContext.SetOfflineAsync(offline).GetAwaiter().GetResult();
+        return browserContext;
     }
 
     public static string StorageState(this IBrowserContext browserContext, BrowserContextStorageStateOptions? options = null)
@@ -184,19 +212,22 @@ public static class BrowserContextSynchronous
         return browserContext.StorageStateAsync(options).GetAwaiter().GetResult();
     }
 
-    public static void Unroute(this IBrowserContext browserContext, string url, Action<IRoute>? handler = null)
+    public static IBrowserContext Unroute(this IBrowserContext browserContext, string url, Action<IRoute>? handler = null)
     {
         browserContext.UnrouteAsync(url, handler).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void Unroute(this IBrowserContext browserContext, Regex url, Action<IRoute>? handler = null)
+    public static IBrowserContext Unroute(this IBrowserContext browserContext, Regex url, Action<IRoute>? handler = null)
     {
         browserContext.UnrouteAsync(url, handler).GetAwaiter().GetResult();
+        return browserContext;
     }
 
-    public static void Unroute(this IBrowserContext browserContext, Func<string, bool> url, Action<IRoute>? handler = null)
+    public static IBrowserContext Unroute(this IBrowserContext browserContext, Func<string, bool> url, Action<IRoute>? handler = null)
     {
         browserContext.UnrouteAsync(url, handler).GetAwaiter().GetResult();
+        return browserContext;
     }
 
     public static IPage WaitForPage(this IBrowserContext browserContext, BrowserContextWaitForPageOptions? options = null)

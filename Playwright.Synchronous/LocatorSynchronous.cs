@@ -44,14 +44,16 @@ public static class LocatorSynchronous
         return locator.BoundingBoxAsync(options).GetAwaiter().GetResult();
     }
 
-    public static void Check(this ILocator locator, LocatorCheckOptions? options = null)
+    public static ILocator Check(this ILocator locator, LocatorCheckOptions? options = null)
     {
         locator.CheckAsync(options).GetAwaiter().GetResult();
+        return locator;
     }
 
-    public static void Click(this ILocator locator, LocatorClickOptions? options = null)
+    public static ILocator Click(this ILocator locator, LocatorClickOptions? options = null)
     {
         locator.ClickAsync(options).GetAwaiter().GetResult();
+        return locator;
     }
 
     public static int Count(this ILocator locator)
@@ -59,14 +61,16 @@ public static class LocatorSynchronous
         return locator.CountAsync().GetAwaiter().GetResult();
     }
 
-    public static void DblClick(this ILocator locator, LocatorDblClickOptions? options = null)
+    public static ILocator DblClick(this ILocator locator, LocatorDblClickOptions? options = null)
     {
         locator.DblClickAsync(options).GetAwaiter().GetResult();
+        return locator;
     }
 
-    public static void DispatchEvent(this ILocator locator, string type, object? eventInit = null, LocatorDispatchEventOptions? options = null)
+    public static ILocator DispatchEvent(this ILocator locator, string type, object? eventInit = null, LocatorDispatchEventOptions? options = null)
     {
         locator.DispatchEventAsync(type, eventInit, options).GetAwaiter().GetResult();
+        return locator;
     }
 
     public static IElementHandle ElementHandle(this ILocator locator, LocatorElementHandleOptions? options = null)
@@ -94,14 +98,16 @@ public static class LocatorSynchronous
         return locator.EvaluateHandleAsync(expression, arg, options).GetAwaiter().GetResult();
     }
 
-    public static void Fill(this ILocator locator, string value, LocatorFillOptions? options = null)
+    public static ILocator Fill(this ILocator locator, string value, LocatorFillOptions? options = null)
     {
         locator.FillAsync(value, options).GetAwaiter().GetResult();
+        return locator;
     }
 
-    public static void Focus(this ILocator locator, LocatorFocusOptions? options = null)
+    public static ILocator Focus(this ILocator locator, LocatorFocusOptions? options = null)
     {
         locator.FocusAsync(options).GetAwaiter().GetResult();
+        return locator;
     }
 
     public static string? GetAttribute(this ILocator locator, string name, LocatorGetAttributeOptions? options = null)
@@ -109,9 +115,10 @@ public static class LocatorSynchronous
         return locator.GetAttributeAsync(name, options).GetAwaiter().GetResult();
     }
 
-    public static void Hover(this ILocator locator, LocatorHoverOptions? options = null)
+    public static ILocator Hover(this ILocator locator, LocatorHoverOptions? options = null)
     {
         locator.HoverAsync(options).GetAwaiter().GetResult();
+        return locator;
     }
 
     public static string InnerHTML(this ILocator locator, LocatorInnerHTMLOptions? options = null)
@@ -159,9 +166,10 @@ public static class LocatorSynchronous
         return locator.IsVisibleAsync(options).GetAwaiter().GetResult();
     }
 
-    public static void Press(this ILocator locator, string key, LocatorPressOptions? options = null)
+    public static ILocator Press(this ILocator locator, string key, LocatorPressOptions? options = null)
     {
         locator.PressAsync(key, options).GetAwaiter().GetResult();
+        return locator;
     }
 
     public static byte[] Screenshot(this ILocator locator, LocatorScreenshotOptions? options = null)
@@ -169,9 +177,10 @@ public static class LocatorSynchronous
         return locator.ScreenshotAsync(options).GetAwaiter().GetResult();
     }
 
-    public static void ScrollIntoViewIfNeeded(this ILocator locator, LocatorScrollIntoViewIfNeededOptions? options = null)
+    public static ILocator ScrollIntoViewIfNeeded(this ILocator locator, LocatorScrollIntoViewIfNeededOptions? options = null)
     {
         locator.ScrollIntoViewIfNeededAsync(options).GetAwaiter().GetResult();
+        return locator;
     }
 
     public static IReadOnlyList<string> SelectOption(this ILocator locator, string values, LocatorSelectOptionOptions? options = null)
@@ -204,39 +213,46 @@ public static class LocatorSynchronous
         return locator.SelectOptionAsync(values, options).GetAwaiter().GetResult();
     }
 
-    public static void SelectText(this ILocator locator, LocatorSelectTextOptions? options = null)
+    public static ILocator SelectText(this ILocator locator, LocatorSelectTextOptions? options = null)
     {
         locator.SelectTextAsync(options).GetAwaiter().GetResult();
+        return locator;
     }
 
-    public static void SetChecked(this ILocator locator, bool checkedState, LocatorSetCheckedOptions? options = null)
+    public static ILocator SetChecked(this ILocator locator, bool checkedState, LocatorSetCheckedOptions? options = null)
     {
         locator.SetCheckedAsync(checkedState, options).GetAwaiter().GetResult();
+        return locator;
     }
 
-    public static void SetInputFiles(this ILocator locator, string files, LocatorSetInputFilesOptions? options = null)
+    public static ILocator SetInputFiles(this ILocator locator, string files, LocatorSetInputFilesOptions? options = null)
     {
         locator.SetInputFilesAsync(files, options).GetAwaiter().GetResult();
+        return locator;
     }
 
-    public static void SetInputFiles(this ILocator locator, IEnumerable<string> files, LocatorSetInputFilesOptions? options = null)
+    public static ILocator SetInputFiles(this ILocator locator, IEnumerable<string> files, LocatorSetInputFilesOptions? options = null)
     {
         locator.SetInputFilesAsync(files, options).GetAwaiter().GetResult();
+        return locator;
     }
 
-    public static void SetInputFiles(this ILocator locator, FilePayload files, LocatorSetInputFilesOptions? options = null)
+    public static ILocator SetInputFiles(this ILocator locator, FilePayload files, LocatorSetInputFilesOptions? options = null)
     {
         locator.SetInputFilesAsync(files, options).GetAwaiter().GetResult();
+        return locator;
     }
 
-    public static void SetInputFiles(this ILocator locator, IEnumerable<FilePayload> files, LocatorSetInputFilesOptions? options = null)
+    public static ILocator SetInputFiles(this ILocator locator, IEnumerable<FilePayload> files, LocatorSetInputFilesOptions? options = null)
     {
         locator.SetInputFilesAsync(files, options).GetAwaiter().GetResult();
+        return locator;
     }
 
-    public static void Tap(this ILocator locator, LocatorTapOptions? options = null)
+    public static ILocator Tap(this ILocator locator, LocatorTapOptions? options = null)
     {
         locator.TapAsync(options).GetAwaiter().GetResult();
+        return locator;
     }
 
     public static string? TextContent(this ILocator locator, LocatorTextContentOptions? options = null)
@@ -244,19 +260,22 @@ public static class LocatorSynchronous
         return locator.TextContentAsync(options).GetAwaiter().GetResult();
     }
 
-    public static void Type(this ILocator locator, string text, LocatorTypeOptions? options = null)
+    public static ILocator Type(this ILocator locator, string text, LocatorTypeOptions? options = null)
     {
         locator.TypeAsync(text, options).GetAwaiter().GetResult();
+        return locator;
     }
 
-    public static void Uncheck(this ILocator locator, LocatorUncheckOptions? options = null)
+    public static ILocator Uncheck(this ILocator locator, LocatorUncheckOptions? options = null)
     {
         locator.UncheckAsync(options).GetAwaiter().GetResult();
+        return locator;
     }
 
-    public static void WaitFor(this ILocator locator, LocatorWaitForOptions? options = null)
+    public static ILocator WaitFor(this ILocator locator, LocatorWaitForOptions? options = null)
     {
         locator.WaitForAsync(options).GetAwaiter().GetResult();
+        return locator;
     }
 
     public static JsonElement? Evaluate(this ILocator locator, string expression, object? arg = null, LocatorEvaluateOptions? options = null)

@@ -40,14 +40,16 @@ public static class FrameSynchronous
         return frame.AddStyleTagAsync(options).GetAwaiter().GetResult();
     }
 
-    public static void Check(this IFrame frame, string selector, FrameCheckOptions? options = null)
+    public static IFrame Check(this IFrame frame, string selector, FrameCheckOptions? options = null)
     {
         frame.CheckAsync(selector, options).GetAwaiter().GetResult();
+        return frame;
     }
 
-    public static void Click(this IFrame frame, string selector, FrameClickOptions? options = null)
+    public static IFrame Click(this IFrame frame, string selector, FrameClickOptions? options = null)
     {
         frame.ClickAsync(selector, options).GetAwaiter().GetResult();
+        return frame;
     }
 
     public static string Content(this IFrame frame)
@@ -55,19 +57,22 @@ public static class FrameSynchronous
         return frame.ContentAsync().GetAwaiter().GetResult();
     }
 
-    public static void DblClick(this IFrame frame, string selector, FrameDblClickOptions? options = null)
+    public static IFrame DblClick(this IFrame frame, string selector, FrameDblClickOptions? options = null)
     {
         frame.DblClickAsync(selector, options).GetAwaiter().GetResult();
+        return frame;
     }
 
-    public static void DispatchEvent(this IFrame frame, string selector, string type, object? eventInit = null, FrameDispatchEventOptions? options = null)
+    public static IFrame DispatchEvent(this IFrame frame, string selector, string type, object? eventInit = null, FrameDispatchEventOptions? options = null)
     {
         frame.DispatchEventAsync(selector, type, eventInit, options).GetAwaiter().GetResult();
+        return frame;
     }
 
-    public static void DragAndDrop(this IFrame frame, string source, string target, FrameDragAndDropOptions? options = null)
+    public static IFrame DragAndDrop(this IFrame frame, string source, string target, FrameDragAndDropOptions? options = null)
     {
         frame.DragAndDropAsync(source, target, options).GetAwaiter().GetResult();
+        return frame;
     }
 
     public static T EvalOnSelector<T>(this IFrame frame, string selector, string expression, object? arg = null, FrameEvalOnSelectorOptions? options = null)
@@ -90,14 +95,16 @@ public static class FrameSynchronous
         return frame.EvaluateHandleAsync(expression, arg).GetAwaiter().GetResult();
     }
 
-    public static void Fill(this IFrame frame, string selector, string value, FrameFillOptions? options = null)
+    public static IFrame Fill(this IFrame frame, string selector, string value, FrameFillOptions? options = null)
     {
         frame.FillAsync(selector, value, options).GetAwaiter().GetResult();
+        return frame;
     }
 
-    public static void Focus(this IFrame frame, string selector, FrameFocusOptions? options = null)
+    public static IFrame Focus(this IFrame frame, string selector, FrameFocusOptions? options = null)
     {
         frame.FocusAsync(selector, options).GetAwaiter().GetResult();
+        return frame;
     }
 
     public static IElementHandle FrameElement(this IFrame frame)
@@ -115,9 +122,10 @@ public static class FrameSynchronous
         return frame.GotoAsync(url, options).GetAwaiter().GetResult();
     }
 
-    public static void Hover(this IFrame frame, string selector, FrameHoverOptions? options = null)
+    public static IFrame Hover(this IFrame frame, string selector, FrameHoverOptions? options = null)
     {
         frame.HoverAsync(selector, options).GetAwaiter().GetResult();
+        return frame;
     }
 
     public static string InnerHTML(this IFrame frame, string selector, FrameInnerHTMLOptions? options = null)
@@ -165,9 +173,10 @@ public static class FrameSynchronous
         return frame.IsVisibleAsync(selector, options).GetAwaiter().GetResult();
     }
 
-    public static void Press(this IFrame frame, string selector, string key, FramePressOptions? options = null)
+    public static IFrame Press(this IFrame frame, string selector, string key, FramePressOptions? options = null)
     {
         frame.PressAsync(selector, key, options).GetAwaiter().GetResult();
+        return frame;
     }
 
     public static IElementHandle? QuerySelector(this IFrame frame, string selector, FrameQuerySelectorOptions? options = null)
@@ -210,39 +219,46 @@ public static class FrameSynchronous
         return frame.SelectOptionAsync(selector, values, options).GetAwaiter().GetResult();
     }
 
-    public static void SetChecked(this IFrame frame, string selector, bool checkedState, FrameSetCheckedOptions? options = null)
+    public static IFrame SetChecked(this IFrame frame, string selector, bool checkedState, FrameSetCheckedOptions? options = null)
     {
         frame.SetCheckedAsync(selector, checkedState, options).GetAwaiter().GetResult();
+        return frame;
     }
 
-    public static void SetContent(this IFrame frame, string html, FrameSetContentOptions? options = null)
+    public static IFrame SetContent(this IFrame frame, string html, FrameSetContentOptions? options = null)
     {
         frame.SetContentAsync(html, options).GetAwaiter().GetResult();
+        return frame;
     }
 
-    public static void SetInputFiles(this IFrame frame, string selector, string files, FrameSetInputFilesOptions? options = null)
+    public static IFrame SetInputFiles(this IFrame frame, string selector, string files, FrameSetInputFilesOptions? options = null)
     {
         frame.SetInputFilesAsync(selector, files, options).GetAwaiter().GetResult();
+        return frame;
     }
 
-    public static void SetInputFiles(this IFrame frame, string selector, IEnumerable<string> files, FrameSetInputFilesOptions? options = null)
+    public static IFrame SetInputFiles(this IFrame frame, string selector, IEnumerable<string> files, FrameSetInputFilesOptions? options = null)
     {
         frame.SetInputFilesAsync(selector, files, options).GetAwaiter().GetResult();
+        return frame;
     }
 
-    public static void SetInputFiles(this IFrame frame, string selector, FilePayload files, FrameSetInputFilesOptions? options = null)
+    public static IFrame SetInputFiles(this IFrame frame, string selector, FilePayload files, FrameSetInputFilesOptions? options = null)
     {
         frame.SetInputFilesAsync(selector, files, options).GetAwaiter().GetResult();
+        return frame;
     }
 
-    public static void SetInputFiles(this IFrame frame, string selector, IEnumerable<FilePayload> files, FrameSetInputFilesOptions? options = null)
+    public static IFrame SetInputFiles(this IFrame frame, string selector, IEnumerable<FilePayload> files, FrameSetInputFilesOptions? options = null)
     {
         frame.SetInputFilesAsync(selector, files, options).GetAwaiter().GetResult();
+        return frame;
     }
 
-    public static void Tap(this IFrame frame, string selector, FrameTapOptions? options = null)
+    public static IFrame Tap(this IFrame frame, string selector, FrameTapOptions? options = null)
     {
         frame.TapAsync(selector, options).GetAwaiter().GetResult();
+        return frame;
     }
 
     public static string? TextContent(this IFrame frame, string selector, FrameTextContentOptions? options = null)
@@ -255,14 +271,16 @@ public static class FrameSynchronous
         return frame.TitleAsync().GetAwaiter().GetResult();
     }
 
-    public static void Type(this IFrame frame, string selector, string text, FrameTypeOptions? options = null)
+    public static IFrame Type(this IFrame frame, string selector, string text, FrameTypeOptions? options = null)
     {
         frame.TypeAsync(selector, text, options).GetAwaiter().GetResult();
+        return frame;
     }
 
-    public static void Uncheck(this IFrame frame, string selector, FrameUncheckOptions? options = null)
+    public static IFrame Uncheck(this IFrame frame, string selector, FrameUncheckOptions? options = null)
     {
         frame.UncheckAsync(selector, options).GetAwaiter().GetResult();
+        return frame;
     }
 
     public static IJSHandle WaitForFunction(this IFrame frame, string expression, object? arg = null, FrameWaitForFunctionOptions? options = null)
@@ -270,9 +288,10 @@ public static class FrameSynchronous
         return frame.WaitForFunctionAsync(expression, arg, options).GetAwaiter().GetResult();
     }
 
-    public static void WaitForLoadState(this IFrame frame, LoadState? state = null, FrameWaitForLoadStateOptions? options = null)
+    public static IFrame WaitForLoadState(this IFrame frame, LoadState? state = null, FrameWaitForLoadStateOptions? options = null)
     {
         frame.WaitForLoadStateAsync(state, options).GetAwaiter().GetResult();
+        return frame;
     }
 
     public static IResponse? WaitForNavigation(this IFrame frame, FrameWaitForNavigationOptions? options = null)
@@ -290,24 +309,28 @@ public static class FrameSynchronous
         return frame.WaitForSelectorAsync(selector, options).GetAwaiter().GetResult();
     }
 
-    public static void WaitForTimeout(this IFrame frame, float timeout)
+    public static IFrame WaitForTimeout(this IFrame frame, float timeout)
     {
         frame.WaitForTimeoutAsync(timeout).GetAwaiter().GetResult();
+        return frame;
     }
 
-    public static void WaitForURL(this IFrame frame, string url, FrameWaitForURLOptions? options = null)
+    public static IFrame WaitForURL(this IFrame frame, string url, FrameWaitForURLOptions? options = null)
     {
         frame.WaitForURLAsync(url, options).GetAwaiter().GetResult();
+        return frame;
     }
 
-    public static void WaitForURL(this IFrame frame, Regex url, FrameWaitForURLOptions? options = null)
+    public static IFrame WaitForURL(this IFrame frame, Regex url, FrameWaitForURLOptions? options = null)
     {
         frame.WaitForURLAsync(url, options).GetAwaiter().GetResult();
+        return frame;
     }
 
-    public static void WaitForURL(this IFrame frame, Func<string, bool> url, FrameWaitForURLOptions? options = null)
+    public static IFrame WaitForURL(this IFrame frame, Func<string, bool> url, FrameWaitForURLOptions? options = null)
     {
         frame.WaitForURLAsync(url, options).GetAwaiter().GetResult();
+        return frame;
     }
 
     public static JsonElement? Evaluate(this IFrame frame, string expression, object? arg = null)

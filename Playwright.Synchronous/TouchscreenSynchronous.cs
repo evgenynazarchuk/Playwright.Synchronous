@@ -28,8 +28,9 @@ namespace Playwright.Synchronous;
 
 public static class TouchscreenSynchronous
 {
-    public static void Tap(ITouchscreen touchscreen, float x, float y)
+    public static ITouchscreen Tap(ITouchscreen touchscreen, float x, float y)
     {
         touchscreen.TapAsync(x, y).GetAwaiter().GetResult();
+        return touchscreen;
     }
 }
