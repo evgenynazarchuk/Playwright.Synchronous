@@ -693,7 +693,7 @@ public static class PageSynchronous
         return page.ScreenshotAsync(options).GetAwaiter().GetResult();
     }
 
-    public static IElementHandle FindElement(this IPage page, string selector, PageQuerySelectorOptions? options)
+    public static IElementHandle FindElement(this IPage page, string selector, PageQuerySelectorOptions? options = null)
     {
         var element = page.QuerySelector(selector, options);
         if (element is null) throw new ApplicationException($"Element not found. Selector:\n{selector}");
