@@ -696,7 +696,7 @@ public static class PageSynchronous
     public static IElementHandle FindElement(this IPage page, string selector, PageQuerySelectorOptions? options = null)
     {
         var element = page.QuerySelector(selector, options);
-        if (element is null) throw new ApplicationException($"Element not found. Selector:\n{selector}");
+        if (element is null) throw new ApplicationException($"Element not found. Selector: {selector}");
 
         return element;
     }

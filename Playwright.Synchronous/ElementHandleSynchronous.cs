@@ -281,7 +281,7 @@ public static class ElementHandleSynchronous
     public static IElementHandle FindElement(this IElementHandle elementHandle, string selector)
     {
         var element = elementHandle.QuerySelector(selector);
-        if (element is null) throw new ApplicationException($"Element not found. Selector:\n{selector}");
+        if (element is null) throw new ApplicationException($"Element not found. Selector: {selector}");
 
         return element;
     }
