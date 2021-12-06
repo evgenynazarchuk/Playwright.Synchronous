@@ -99,22 +99,22 @@ public static class PageSynchronous
         return page;
     }
 
-    public static IPage EvalOnSelector<T>(this IPage page, string selector, string expression, object? arg = null, PageEvalOnSelectorOptions? options = null)
+    public static T EvalOnSelector<T>(this IPage page, string selector, string expression, object? arg = null, PageEvalOnSelectorOptions? options = null)
     {
-        page.EvalOnSelectorAsync<T>(selector, expression, arg, options).GetAwaiter().GetResult();
-        return page;
+        var result = page.EvalOnSelectorAsync<T>(selector, expression, arg, options).GetAwaiter().GetResult();
+        return result;
     }
 
-    public static IPage EvalOnSelectorAll<T>(this IPage page, string selector, string expression, object? arg = null)
+    public static T EvalOnSelectorAll<T>(this IPage page, string selector, string expression, object? arg = null)
     {
-        page.EvalOnSelectorAllAsync<T>(selector, expression, arg).GetAwaiter().GetResult();
-        return page;
+        var result = page.EvalOnSelectorAllAsync<T>(selector, expression, arg).GetAwaiter().GetResult();
+        return result;
     }
 
-    public static IPage Evaluate<T>(this IPage page, string expression, object? arg = null)
+    public static T Evaluate<T>(this IPage page, string expression, object? arg = null)
     {
-        page.EvaluateAsync<T>(expression, arg);
-        return page;
+        var result = page.EvaluateAsync<T>(expression, arg).GetAwaiter().GetResult();
+        return result;
     }
 
     public static IPage EvaluateHandle(this IPage page, string expression, object? arg = null)
