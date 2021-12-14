@@ -30,14 +30,19 @@ namespace Playwright.Synchronous;
 
 public static class FrameSynchronous
 {
-    public static IElementHandle AddScriptTag(this IFrame frame, FrameAddScriptTagOptions? options = null)
+    public static IResponse? Goto(this IFrame frame, string url, FrameGotoOptions? options = null)
     {
-        return frame.AddScriptTagAsync(options).GetAwaiter().GetResult();
+        return frame.GotoAsync(url, options).GetAwaiter().GetResult();
     }
 
-    public static IElementHandle AddStyleTag(this IFrame frame, FrameAddStyleTagOptions? options = null)
+    public static IElementHandle? QuerySelector(this IFrame frame, string selector, FrameQuerySelectorOptions? options = null)
     {
-        return frame.AddStyleTagAsync(options).GetAwaiter().GetResult();
+        return frame.QuerySelectorAsync(selector, options).GetAwaiter().GetResult();
+    }
+
+    public static IReadOnlyList<IElementHandle> QuerySelectorAll(this IFrame frame, string selector)
+    {
+        return frame.QuerySelectorAllAsync(selector).GetAwaiter().GetResult();
     }
 
     public static IFrame Check(this IFrame frame, string selector, FrameCheckOptions? options = null)
@@ -52,20 +57,9 @@ public static class FrameSynchronous
         return frame;
     }
 
-    public static string Content(this IFrame frame)
-    {
-        return frame.ContentAsync().GetAwaiter().GetResult();
-    }
-
     public static IFrame DblClick(this IFrame frame, string selector, FrameDblClickOptions? options = null)
     {
         frame.DblClickAsync(selector, options).GetAwaiter().GetResult();
-        return frame;
-    }
-
-    public static IFrame DispatchEvent(this IFrame frame, string selector, string type, object? eventInit = null, FrameDispatchEventOptions? options = null)
-    {
-        frame.DispatchEventAsync(selector, type, eventInit, options).GetAwaiter().GetResult();
         return frame;
     }
 
@@ -73,26 +67,6 @@ public static class FrameSynchronous
     {
         frame.DragAndDropAsync(source, target, options).GetAwaiter().GetResult();
         return frame;
-    }
-
-    public static T EvalOnSelector<T>(this IFrame frame, string selector, string expression, object? arg = null, FrameEvalOnSelectorOptions? options = null)
-    {
-        return frame.EvalOnSelectorAsync<T>(selector, expression, arg).GetAwaiter().GetResult();
-    }
-
-    public static T EvalOnSelectorAll<T>(this IFrame frame, string selector, string expression, object? arg = null)
-    {
-        return frame.EvalOnSelectorAllAsync<T>(selector, expression).GetAwaiter().GetResult();
-    }
-
-    public static T Evaluate<T>(this IFrame frame, string expression, object? arg = null)
-    {
-        return frame.EvaluateAsync<T>(expression, arg).GetAwaiter().GetResult();
-    }
-
-    public static IJSHandle EvaluateHandle(this IFrame frame, string expression, object? arg = null)
-    {
-        return frame.EvaluateHandleAsync(expression, arg).GetAwaiter().GetResult();
     }
 
     public static IFrame Fill(this IFrame frame, string selector, string value, FrameFillOptions? options = null)
@@ -107,70 +81,10 @@ public static class FrameSynchronous
         return frame;
     }
 
-    public static IElementHandle FrameElement(this IFrame frame)
-    {
-        return frame.FrameElementAsync().GetAwaiter().GetResult();
-    }
-
-    public static string? GetAttribute(this IFrame frame, string selector, string name, FrameGetAttributeOptions? options = null)
-    {
-        return frame.GetAttributeAsync(selector, name, options).GetAwaiter().GetResult();
-    }
-
-    public static IResponse? Goto(this IFrame frame, string url, FrameGotoOptions? options = null)
-    {
-        return frame.GotoAsync(url, options).GetAwaiter().GetResult();
-    }
-
     public static IFrame Hover(this IFrame frame, string selector, FrameHoverOptions? options = null)
     {
         frame.HoverAsync(selector, options).GetAwaiter().GetResult();
         return frame;
-    }
-
-    public static string InnerHTML(this IFrame frame, string selector, FrameInnerHTMLOptions? options = null)
-    {
-        return frame.InnerHTMLAsync(selector, options).GetAwaiter().GetResult();
-    }
-
-    public static string InnerText(this IFrame frame, string selector, FrameInnerTextOptions? options = null)
-    {
-        return frame.InnerTextAsync(selector, options).GetAwaiter().GetResult();
-    }
-
-    public static string InputValue(this IFrame frame, string selector, FrameInputValueOptions? options = null)
-    {
-        return frame.InputValueAsync(selector, options).GetAwaiter().GetResult();
-    }
-
-    public static bool IsChecked(this IFrame frame, string selector, FrameIsCheckedOptions? options = null)
-    {
-        return frame.IsCheckedAsync(selector, options).GetAwaiter().GetResult();
-    }
-
-    public static bool IsDisabled(this IFrame frame, string selector, FrameIsDisabledOptions? options = null)
-    {
-        return frame.IsDisabledAsync(selector, options).GetAwaiter().GetResult();
-    }
-
-    public static bool IsEditable(this IFrame frame, string selector, FrameIsEditableOptions? options = null)
-    {
-        return frame.IsEditableAsync(selector, options).GetAwaiter().GetResult();
-    }
-
-    public static bool IsEnabled(this IFrame frame, string selector, FrameIsEnabledOptions? options = null)
-    {
-        return frame.IsEnabledAsync(selector, options).GetAwaiter().GetResult();
-    }
-
-    public static bool IsHidden(this IFrame frame, string selector, FrameIsHiddenOptions? options = null)
-    {
-        return frame.IsHiddenAsync(selector, options).GetAwaiter().GetResult();
-    }
-
-    public static bool IsVisible(this IFrame frame, string selector, FrameIsVisibleOptions? options = null)
-    {
-        return frame.IsVisibleAsync(selector, options).GetAwaiter().GetResult();
     }
 
     public static IFrame Press(this IFrame frame, string selector, string key, FramePressOptions? options = null)
@@ -179,14 +93,28 @@ public static class FrameSynchronous
         return frame;
     }
 
-    public static IElementHandle? QuerySelector(this IFrame frame, string selector, FrameQuerySelectorOptions? options = null)
+    public static IFrame SetChecked(this IFrame frame, string selector, bool checkedState, FrameSetCheckedOptions? options = null)
     {
-        return frame.QuerySelectorAsync(selector, options).GetAwaiter().GetResult();
+        frame.SetCheckedAsync(selector, checkedState, options).GetAwaiter().GetResult();
+        return frame;
     }
 
-    public static IReadOnlyList<IElementHandle> QuerySelectorAll(this IFrame frame, string selector)
+    public static IFrame Tap(this IFrame frame, string selector, FrameTapOptions? options = null)
     {
-        return frame.QuerySelectorAllAsync(selector).GetAwaiter().GetResult();
+        frame.TapAsync(selector, options).GetAwaiter().GetResult();
+        return frame;
+    }
+
+    public static IFrame Type(this IFrame frame, string selector, string text, FrameTypeOptions? options = null)
+    {
+        frame.TypeAsync(selector, text, options).GetAwaiter().GetResult();
+        return frame;
+    }
+
+    public static IFrame Uncheck(this IFrame frame, string selector, FrameUncheckOptions? options = null)
+    {
+        frame.UncheckAsync(selector, options).GetAwaiter().GetResult();
+        return frame;
     }
 
     public static IReadOnlyList<string> SelectOption(this IFrame frame, string selector, string values, FrameSelectOptionOptions? options = null)
@@ -219,18 +147,6 @@ public static class FrameSynchronous
         return frame.SelectOptionAsync(selector, values, options).GetAwaiter().GetResult();
     }
 
-    public static IFrame SetChecked(this IFrame frame, string selector, bool checkedState, FrameSetCheckedOptions? options = null)
-    {
-        frame.SetCheckedAsync(selector, checkedState, options).GetAwaiter().GetResult();
-        return frame;
-    }
-
-    public static IFrame SetContent(this IFrame frame, string html, FrameSetContentOptions? options = null)
-    {
-        frame.SetContentAsync(html, options).GetAwaiter().GetResult();
-        return frame;
-    }
-
     public static IFrame SetInputFiles(this IFrame frame, string selector, string files, FrameSetInputFilesOptions? options = null)
     {
         frame.SetInputFilesAsync(selector, files, options).GetAwaiter().GetResult();
@@ -255,10 +171,19 @@ public static class FrameSynchronous
         return frame;
     }
 
-    public static IFrame Tap(this IFrame frame, string selector, FrameTapOptions? options = null)
+    public static string InnerHTML(this IFrame frame, string selector, FrameInnerHTMLOptions? options = null)
     {
-        frame.TapAsync(selector, options).GetAwaiter().GetResult();
-        return frame;
+        return frame.InnerHTMLAsync(selector, options).GetAwaiter().GetResult();
+    }
+
+    public static string InnerText(this IFrame frame, string selector, FrameInnerTextOptions? options = null)
+    {
+        return frame.InnerTextAsync(selector, options).GetAwaiter().GetResult();
+    }
+
+    public static string InputValue(this IFrame frame, string selector, FrameInputValueOptions? options = null)
+    {
+        return frame.InputValueAsync(selector, options).GetAwaiter().GetResult();
     }
 
     public static string? TextContent(this IFrame frame, string selector, FrameTextContentOptions? options = null)
@@ -271,15 +196,101 @@ public static class FrameSynchronous
         return frame.TitleAsync().GetAwaiter().GetResult();
     }
 
-    public static IFrame Type(this IFrame frame, string selector, string text, FrameTypeOptions? options = null)
+    public static string Content(this IFrame frame)
     {
-        frame.TypeAsync(selector, text, options).GetAwaiter().GetResult();
+        return frame.ContentAsync().GetAwaiter().GetResult();
+    }
+
+    public static bool IsChecked(this IFrame frame, string selector, FrameIsCheckedOptions? options = null)
+    {
+        return frame.IsCheckedAsync(selector, options).GetAwaiter().GetResult();
+    }
+
+    public static bool IsDisabled(this IFrame frame, string selector, FrameIsDisabledOptions? options = null)
+    {
+        return frame.IsDisabledAsync(selector, options).GetAwaiter().GetResult();
+    }
+
+    public static bool IsEditable(this IFrame frame, string selector, FrameIsEditableOptions? options = null)
+    {
+        return frame.IsEditableAsync(selector, options).GetAwaiter().GetResult();
+    }
+
+    public static bool IsEnabled(this IFrame frame, string selector, FrameIsEnabledOptions? options = null)
+    {
+        return frame.IsEnabledAsync(selector, options).GetAwaiter().GetResult();
+    }
+
+    public static bool IsHidden(this IFrame frame, string selector, FrameIsHiddenOptions? options = null)
+    {
+        return frame.IsHiddenAsync(selector, options).GetAwaiter().GetResult();
+    }
+
+    public static bool IsVisible(this IFrame frame, string selector, FrameIsVisibleOptions? options = null)
+    {
+        return frame.IsVisibleAsync(selector, options).GetAwaiter().GetResult();
+    }
+
+    public static string? GetAttribute(this IFrame frame, string selector, string name, FrameGetAttributeOptions? options = null)
+    {
+        string? result = null;
+
+        try
+        {
+            result = frame.GetAttributeAsync(selector, name, options).GetAwaiter().GetResult();
+        }
+        catch
+        {
+            return result;
+        }
+
+        return result;
+    }
+
+    public static IElementHandle AddScriptTag(this IFrame frame, FrameAddScriptTagOptions? options = null)
+    {
+        return frame.AddScriptTagAsync(options).GetAwaiter().GetResult();
+    }
+
+    public static IElementHandle AddStyleTag(this IFrame frame, FrameAddStyleTagOptions? options = null)
+    {
+        return frame.AddStyleTagAsync(options).GetAwaiter().GetResult();
+    }
+
+    public static IFrame DispatchEvent(this IFrame frame, string selector, string type, object? eventInit = null, FrameDispatchEventOptions? options = null)
+    {
+        frame.DispatchEventAsync(selector, type, eventInit, options).GetAwaiter().GetResult();
         return frame;
     }
 
-    public static IFrame Uncheck(this IFrame frame, string selector, FrameUncheckOptions? options = null)
+    public static T EvalOnSelector<T>(this IFrame frame, string selector, string expression, object? arg = null, FrameEvalOnSelectorOptions? options = null)
     {
-        frame.UncheckAsync(selector, options).GetAwaiter().GetResult();
+        return frame.EvalOnSelectorAsync<T>(selector, expression, arg).GetAwaiter().GetResult();
+    }
+
+    public static T EvalOnSelectorAll<T>(this IFrame frame, string selector, string expression, object? arg = null)
+    {
+        return frame.EvalOnSelectorAllAsync<T>(selector, expression).GetAwaiter().GetResult();
+    }
+
+    public static T Evaluate<T>(this IFrame frame, string expression, object? arg = null)
+    {
+        return frame.EvaluateAsync<T>(expression, arg).GetAwaiter().GetResult();
+    }
+
+    public static IJSHandle EvaluateHandle(this IFrame frame, string expression, object? arg = null)
+    {
+        return frame.EvaluateHandleAsync(expression, arg).GetAwaiter().GetResult();
+    }
+
+    public static IElementHandle FrameElement(this IFrame frame)
+    {
+        return frame.FrameElementAsync().GetAwaiter().GetResult();
+    }
+
+    public static IFrame SetContent(this IFrame frame, string html, FrameSetContentOptions? options = null)
+    {
+        frame.SetContentAsync(html, options).GetAwaiter().GetResult();
         return frame;
     }
 
@@ -346,13 +357,5 @@ public static class FrameSynchronous
     public static JsonElement? EvalOnSelectorAll(this IFrame frame, string selector, string expression, object? arg = null)
     {
         return frame.EvalOnSelectorAllAsync(selector, expression, arg).GetAwaiter().GetResult();
-    }
-
-    public static IElementHandle FindElement(this IFrame frame, string selector, FrameQuerySelectorOptions? options = null)
-    {
-        var element = frame.QuerySelector(selector, options);
-        if (element is null) throw new ApplicationException($"Element not found. Selector:\n{selector}");
-
-        return element;
     }
 }

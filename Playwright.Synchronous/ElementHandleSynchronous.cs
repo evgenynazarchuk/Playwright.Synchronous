@@ -29,129 +29,6 @@ namespace Playwright.Synchronous;
 
 public static class ElementHandleSynchronous
 {
-    public static ElementHandleBoundingBoxResult? BoundingBox(this IElementHandle element)
-    {
-        return element.BoundingBoxAsync().GetAwaiter().GetResult();
-    }
-
-    public static IElementHandle Check(this IElementHandle element, ElementHandleCheckOptions? options = null)
-    {
-        element.CheckAsync(options).GetAwaiter().GetResult();
-        return element;
-    }
-
-    public static IElementHandle Click(this IElementHandle element, ElementHandleClickOptions? options = null)
-    {
-        element.ClickAsync(options).GetAwaiter().GetResult();
-        return element;
-    }
-
-    public static IFrame? ContentFrame(this IElementHandle element)
-    {
-        return element.ContentFrameAsync().GetAwaiter().GetResult();
-    }
-
-    public static IElementHandle DblClick(this IElementHandle element, ElementHandleDblClickOptions? options = null)
-    {
-        element.DblClickAsync(options).GetAwaiter().GetResult();
-        return element;
-    }
-
-    public static IElementHandle DispatchEvent(this IElementHandle element, string type, object? eventInit = null)
-    {
-        element.DispatchEventAsync(type, eventInit).GetAwaiter().GetResult();
-        return element;
-    }
-
-    public static T EvalOnSelector<T>(this IElementHandle element, string selector, string expression, object? arg = null)
-    {
-        return element.EvalOnSelectorAsync<T>(selector, expression, arg).GetAwaiter().GetResult();
-    }
-
-    public static T EvalOnSelectorAll<T>(this IElementHandle element, string selector, string expression, object? arg = null)
-    {
-        return element.EvalOnSelectorAllAsync<T>(selector, expression, arg).GetAwaiter().GetResult();
-    }
-
-    public static IElementHandle Fill(this IElementHandle element, string value, ElementHandleFillOptions? options = null)
-    {
-        element.FillAsync(value, options).GetAwaiter().GetResult();
-        return element;
-    }
-
-    public static IElementHandle Focus(this IElementHandle element)
-    {
-        element.FocusAsync().GetAwaiter().GetResult();
-        return element;
-    }
-
-    public static string? GetAttribute(this IElementHandle element, string name)
-    {
-        return element.GetAttributeAsync(name).GetAwaiter().GetResult();
-    }
-
-    public static IElementHandle Hover(this IElementHandle element, ElementHandleHoverOptions? options = null)
-    {
-        element.HoverAsync(options).GetAwaiter().GetResult();
-        return element;
-    }
-
-    public static string InnerHTML(this IElementHandle element)
-    {
-        return element.InnerHTMLAsync().GetAwaiter().GetResult();
-    }
-
-    public static string InnerText(this IElementHandle element)
-    {
-        return element.InnerTextAsync().GetAwaiter().GetResult();
-    }
-
-    public static string InputValue(this IElementHandle element, ElementHandleInputValueOptions? options = null)
-    {
-        return element.InputValueAsync(options).GetAwaiter().GetResult();
-    }
-
-    public static bool IsChecked(this IElementHandle element)
-    {
-        return element.IsCheckedAsync().GetAwaiter().GetResult();
-    }
-
-    public static bool IsDisabled(this IElementHandle element)
-    {
-        return element.IsDisabledAsync().GetAwaiter().GetResult();
-    }
-
-    public static bool IsEditable(this IElementHandle element)
-    {
-        return element.IsEditableAsync().GetAwaiter().GetResult();
-    }
-
-    public static bool IsEnabled(this IElementHandle element)
-    {
-        return element.IsEnabledAsync().GetAwaiter().GetResult();
-    }
-
-    public static bool IsHidden(this IElementHandle element)
-    {
-        return element.IsHiddenAsync().GetAwaiter().GetResult();
-    }
-
-    public static bool IsVisible(this IElementHandle element)
-    {
-        return element.IsVisibleAsync().GetAwaiter().GetResult();
-    }
-
-    public static IFrame? OwnerFrame(this IElementHandle element)
-    {
-        return element.OwnerFrameAsync().GetAwaiter().GetResult();
-    }
-
-    public static IElementHandle Press(this IElementHandle element, string key, ElementHandlePressOptions? options = null)
-    {
-        element.PressAsync(key, options).GetAwaiter().GetResult();
-        return element;
-    }
-
     public static IElementHandle? QuerySelector(this IElementHandle element, string selector)
     {
         return element.QuerySelectorAsync(selector).GetAwaiter().GetResult();
@@ -162,14 +39,75 @@ public static class ElementHandleSynchronous
         return element.QuerySelectorAllAsync(selector).GetAwaiter().GetResult();
     }
 
-    public static byte[] Screenshot(this IElementHandle element, ElementHandleScreenshotOptions? options = null)
+    public static IElementHandle Click(this IElementHandle element, ElementHandleClickOptions? options = null)
     {
-        return element.ScreenshotAsync(options).GetAwaiter().GetResult();
+        element.ClickAsync(options).GetAwaiter().GetResult();
+        return element;
     }
 
-    public static IElementHandle ScrollIntoViewIfNeeded(this IElementHandle element, ElementHandleScrollIntoViewIfNeededOptions? options = null)
+    public static IElementHandle DblClick(this IElementHandle element, ElementHandleDblClickOptions? options = null)
     {
-        element.ScrollIntoViewIfNeededAsync(options).GetAwaiter().GetResult();
+        element.DblClickAsync(options).GetAwaiter().GetResult();
+        return element;
+    }
+
+    public static IElementHandle Press(this IElementHandle element, string key, ElementHandlePressOptions? options = null)
+    {
+        element.PressAsync(key, options).GetAwaiter().GetResult();
+        return element;
+    }
+
+    public static IElementHandle Type(this IElementHandle element, string text, ElementHandleTypeOptions? options = null)
+    {
+        element.TypeAsync(text, options).GetAwaiter().GetResult();
+        return element;
+    }
+
+    public static IElementHandle Fill(this IElementHandle element, string value, ElementHandleFillOptions? options = null)
+    {
+        element.FillAsync(value, options).GetAwaiter().GetResult();
+        return element;
+    }
+
+    public static IElementHandle Uncheck(this IElementHandle element, ElementHandleUncheckOptions? options = null)
+    {
+        element.UncheckAsync(options).GetAwaiter().GetResult();
+        return element;
+    }
+
+    public static IElementHandle Check(this IElementHandle element, ElementHandleCheckOptions? options = null)
+    {
+        element.CheckAsync(options).GetAwaiter().GetResult();
+        return element;
+    }
+
+    public static IElementHandle SetChecked(this IElementHandle element, bool checkedState, ElementHandleSetCheckedOptions? options = null)
+    {
+        element.SetCheckedAsync(checkedState, options).GetAwaiter().GetResult();
+        return element;
+    }
+
+    public static IElementHandle Hover(this IElementHandle element, ElementHandleHoverOptions? options = null)
+    {
+        element.HoverAsync(options).GetAwaiter().GetResult();
+        return element;
+    }
+
+    public static IElementHandle Focus(this IElementHandle element)
+    {
+        element.FocusAsync().GetAwaiter().GetResult();
+        return element;
+    }
+
+    public static IElementHandle Tap(this IElementHandle element, ElementHandleTapOptions? options = null)
+    {
+        element.TapAsync(options).GetAwaiter().GetResult();
+        return element;
+    }
+
+    public static IElementHandle SelectText(this IElementHandle element, ElementHandleSelectTextOptions? options = null)
+    {
+        element.SelectTextAsync(options).GetAwaiter().GetResult();
         return element;
     }
 
@@ -203,18 +141,6 @@ public static class ElementHandleSynchronous
         return element.SelectOptionAsync(values, options).GetAwaiter().GetResult();
     }
 
-    public static IElementHandle SelectText(this IElementHandle element, ElementHandleSelectTextOptions? options = null)
-    {
-        element.SelectTextAsync(options).GetAwaiter().GetResult();
-        return element;
-    }
-
-    public static IElementHandle SetChecked(this IElementHandle element, bool checkedState, ElementHandleSetCheckedOptions? options = null)
-    {
-        element.SetCheckedAsync(checkedState, options).GetAwaiter().GetResult();
-        return element;
-    }
-
     public static IElementHandle SetInputFiles(this IElementHandle element, string files, ElementHandleSetInputFilesOptions? options = null)
     {
         element.SetInputFilesAsync(files, options).GetAwaiter().GetResult();
@@ -239,10 +165,19 @@ public static class ElementHandleSynchronous
         return element;
     }
 
-    public static IElementHandle Tap(this IElementHandle element, ElementHandleTapOptions? options = null)
+    public static string InnerHTML(this IElementHandle element)
     {
-        element.TapAsync(options).GetAwaiter().GetResult();
-        return element;
+        return element.InnerHTMLAsync().GetAwaiter().GetResult();
+    }
+
+    public static string InnerText(this IElementHandle element)
+    {
+        return element.InnerTextAsync().GetAwaiter().GetResult();
+    }
+
+    public static string InputValue(this IElementHandle element, ElementHandleInputValueOptions? options = null)
+    {
+        return element.InputValueAsync(options).GetAwaiter().GetResult();
     }
 
     public static string? TextContent(this IElementHandle element)
@@ -250,16 +185,61 @@ public static class ElementHandleSynchronous
         return element.TextContentAsync().GetAwaiter().GetResult();
     }
 
-    public static IElementHandle Type(this IElementHandle element, string text, ElementHandleTypeOptions? options = null)
+    public static bool IsChecked(this IElementHandle element)
     {
-        element.TypeAsync(text, options).GetAwaiter().GetResult();
+        return element.IsCheckedAsync().GetAwaiter().GetResult();
+    }
+
+    public static bool IsDisabled(this IElementHandle element)
+    {
+        return element.IsDisabledAsync().GetAwaiter().GetResult();
+    }
+
+    public static bool IsEditable(this IElementHandle element)
+    {
+        return element.IsEditableAsync().GetAwaiter().GetResult();
+    }
+
+    public static bool IsEnabled(this IElementHandle element)
+    {
+        return element.IsEnabledAsync().GetAwaiter().GetResult();
+    }
+
+    public static bool IsHidden(this IElementHandle element)
+    {
+        return element.IsHiddenAsync().GetAwaiter().GetResult();
+    }
+
+    public static bool IsVisible(this IElementHandle element)
+    {
+        return element.IsVisibleAsync().GetAwaiter().GetResult();
+    }
+
+    public static IElementHandle ScrollIntoViewIfNeeded(this IElementHandle element, ElementHandleScrollIntoViewIfNeededOptions? options = null)
+    {
+        element.ScrollIntoViewIfNeededAsync(options).GetAwaiter().GetResult();
         return element;
     }
 
-    public static IElementHandle Uncheck(this IElementHandle element, ElementHandleUncheckOptions? options = null)
+    public static string? GetAttribute(this IElementHandle element, string name)
     {
-        element.UncheckAsync(options).GetAwaiter().GetResult();
-        return element;
+        string? result = null;
+
+        try
+        {
+            result = element.GetAttributeAsync(name).GetAwaiter().GetResult();
+        }
+        catch 
+        {
+            return result;
+        }
+
+        return result;
+    }
+
+    public static byte[] Screenshot(this IElementHandle element, ElementHandleScreenshotOptions? options = null)
+    {
+        return element.ScreenshotAsync(options).GetAwaiter().GetResult();
     }
 
     public static IElementHandle WaitForElementState(this IElementHandle element, ElementState state, ElementHandleWaitForElementStateOptions? options = null)
@@ -278,11 +258,34 @@ public static class ElementHandleSynchronous
         return element.EvalOnSelectorAsync(selector, expression, arg).GetAwaiter().GetResult();
     }
 
-    public static IElementHandle FindElement(this IElementHandle elementHandle, string selector)
+    public static T EvalOnSelector<T>(this IElementHandle element, string selector, string expression, object? arg = null)
     {
-        var element = elementHandle.QuerySelector(selector);
-        if (element is null) throw new ApplicationException($"Element not found. Selector: {selector}");
+        return element.EvalOnSelectorAsync<T>(selector, expression, arg).GetAwaiter().GetResult();
+    }
 
+    public static T EvalOnSelectorAll<T>(this IElementHandle element, string selector, string expression, object? arg = null)
+    {
+        return element.EvalOnSelectorAllAsync<T>(selector, expression, arg).GetAwaiter().GetResult();
+    }
+
+    public static IFrame? ContentFrame(this IElementHandle element)
+    {
+        return element.ContentFrameAsync().GetAwaiter().GetResult();
+    }
+
+    public static IFrame? OwnerFrame(this IElementHandle element)
+    {
+        return element.OwnerFrameAsync().GetAwaiter().GetResult();
+    }
+
+    public static ElementHandleBoundingBoxResult? BoundingBox(this IElementHandle element)
+    {
+        return element.BoundingBoxAsync().GetAwaiter().GetResult();
+    }
+
+    public static IElementHandle DispatchEvent(this IElementHandle element, string type, object? eventInit = null)
+    {
+        element.DispatchEventAsync(type, eventInit).GetAwaiter().GetResult();
         return element;
     }
 }

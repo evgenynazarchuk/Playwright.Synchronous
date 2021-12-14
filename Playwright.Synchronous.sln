@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playwright.Synchronous", "Playwright.Synchronous\Playwright.Synchronous.csproj", "{5DAB3B94-B9F6-4FD3-8801-15FA986CE44B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Playwright.Synchronous", "Playwright.Synchronous\Playwright.Synchronous.csproj", "{5DAB3B94-B9F6-4FD3-8801-15FA986CE44B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playwright.Synchronous.Tests", "Playwright.Synchronous.Tests\Playwright.Synchronous.Tests.csproj", "{658D4690-644F-480A-BDC7-3871EFF870D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5DAB3B94-B9F6-4FD3-8801-15FA986CE44B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DAB3B94-B9F6-4FD3-8801-15FA986CE44B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DAB3B94-B9F6-4FD3-8801-15FA986CE44B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{658D4690-644F-480A-BDC7-3871EFF870D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{658D4690-644F-480A-BDC7-3871EFF870D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{658D4690-644F-480A-BDC7-3871EFF870D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{658D4690-644F-480A-BDC7-3871EFF870D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
