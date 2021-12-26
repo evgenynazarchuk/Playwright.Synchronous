@@ -16,7 +16,6 @@
     <Description>Synchronous methods for Playwright</Description>
 	  
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  
   </PropertyGroup>
 
