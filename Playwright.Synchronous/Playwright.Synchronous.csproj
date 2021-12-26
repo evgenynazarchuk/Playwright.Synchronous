@@ -5,15 +5,18 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-	  <OutputType>Library</OutputType>
-	  <Version>1.17.3.1</Version>
-	  <Authors>Evgeny Nazarchuk</Authors>
-	  <PackageProjectUrl>https://github.com/evgenynazarchuk/Playwright.Synchronous/wiki</PackageProjectUrl>
-	  <RepositoryUrl>https://github.com/evgenynazarchuk/Playwright.Synchronous</RepositoryUrl>
-	  <Copyright>Copyright © Evgeny Nazarchuk</Copyright>
-	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
-	  <Title>Playwright.Synchronous</Title>
-	  <Description>Synchronous methods for Playwright</Description>
+    <OutputType>Library</OutputType>
+    <Version>1.17.3.2</Version>
+    <Authors>Evgeny Nazarchuk</Authors>
+    <PackageProjectUrl>https://github.com/evgenynazarchuk/Playwright.Synchronous/wiki</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/evgenynazarchuk/Playwright.Synchronous</RepositoryUrl>
+    <Copyright>Copyright © Evgeny Nazarchuk</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Title>Playwright.Synchronous</Title>
+    <Description>Synchronous methods for Playwright</Description>
+	  
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  
   </PropertyGroup>
 
