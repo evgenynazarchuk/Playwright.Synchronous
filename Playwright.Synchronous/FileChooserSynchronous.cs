@@ -28,21 +28,61 @@ namespace Playwright.Synchronous;
 
 public static class FileChooserSynchronous
 {
+    /// <summary>
+    /// <para>
+    /// Sets the value of the file input this chooser is associated with. If some of the
+    /// <c>filePaths</c> are relative paths, then they are resolved relative to the the
+    /// current working directory. For empty array, clears the selected files.
+    /// </para>
+    /// </summary>
+    /// <param name="files">
+    /// </param>
+    /// <param name="options">Call options</param>
     public static void SetFile(this IFileChooser fileChooser, string files, FileChooserSetFilesOptions? options = null)
     {
         fileChooser.SetFilesAsync(files, options).GetAwaiter().GetResult();
     }
 
+    /// <summary>
+    /// <para>
+    /// Sets the value of the file input this chooser is associated with. If some of the
+    /// <c>filePaths</c> are relative paths, then they are resolved relative to the the
+    /// current working directory. For empty array, clears the selected files.
+    /// </para>
+    /// </summary>
+    /// <param name="files">
+    /// </param>
+    /// <param name="options">Call options</param>
     public static void SetFile(this IFileChooser fileChooser, IEnumerable<string> files, FileChooserSetFilesOptions? options = null)
     {
         fileChooser.SetFilesAsync(files, options).GetAwaiter().GetResult();
     }
 
+    /// <summary>
+    /// <para>
+    /// Sets the value of the file input this chooser is associated with. If some of the
+    /// <c>filePaths</c> are relative paths, then they are resolved relative to the the
+    /// current working directory. For empty array, clears the selected files.
+    /// </para>
+    /// </summary>
+    /// <param name="files">
+    /// </param>
+    /// <param name="options">Call options</param>
     public static void SetFile(this IFileChooser fileChooser, FilePayload files, FileChooserSetFilesOptions? options = null)
     {
         fileChooser.SetFilesAsync(files, options).GetAwaiter().GetResult();
     }
 
+    /// <summary>
+    /// <para>
+    /// Sets the value of the file input this chooser is associated with. If some of the
+    /// <c>filePaths</c> are relative paths, then they are resolved relative to the the
+    /// current working directory. For empty array, clears the selected files.
+    /// </para>
+    /// </summary>
+    /// <param name="files">
+    /// </param>
+    /// <param name="options">Call options</param>
     public static void SetFile(this IFileChooser fileChooser, IEnumerable<FilePayload> files, FileChooserSetFilesOptions? options = null)
     {
         fileChooser.SetFilesAsync(files, options).GetAwaiter().GetResult();

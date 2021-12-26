@@ -28,21 +28,84 @@ namespace Playwright.Synchronous;
 
 public static class TracingSynchronous
 {
+    /// <summary>
+    /// <para>Start tracing.</para>
+    /// <code>
+    /// await using var browser = playwright.Chromium.LaunchAsync();<br/>
+    /// await using var context = await browser.NewContextAsync();<br/>
+    /// await context.Tracing.StartAsync(new TracingStartOptions<br/>
+    /// {<br/>
+    ///   Screenshots: true,<br/>
+    ///   Snapshots: true<br/>
+    /// });<br/>
+    /// var page = context.NewPageAsync();<br/>
+    /// await page.GotoAsync("https://playwright.dev");<br/>
+    /// await context.Tracing.StopAsync(new TracingStopOptions<br/>
+    /// {<br/>
+    ///   Path: "trace.zip"<br/>
+    /// });
+    /// </code>
+    /// </summary>
+    /// <param name="options">Call options</param>
     public static void Start(ITracing tracing, TracingStartOptions? options = default)
     {
         tracing.StartAsync(options).GetAwaiter().GetResult();
     }
 
+    /// <summary>
+    /// <para>
+    /// Start a new trace chunk. If you'd like to record multiple traces on the same <see
+    /// cref="IBrowserContext"/>, use <see cref="ITracing.StartAsync"/> once, and then create
+    /// multiple trace chunks with <see cref="ITracing.StartChunkAsync"/> and <see cref="ITracing.StopChunkAsync"/>.
+    /// </para>
+    /// <code>
+    /// await using var browser = playwright.Chromium.LaunchAsync();<br/>
+    /// await using var context = await browser.NewContextAsync();<br/>
+    /// await context.Tracing.StartAsync(new TracingStartOptions<br/>
+    /// {<br/>
+    ///   Screenshots: true,<br/>
+    ///   Snapshots: true<br/>
+    /// });<br/>
+    /// var page = context.NewPageAsync();<br/>
+    /// await page.GotoAsync("https://playwright.dev");<br/>
+    /// <br/>
+    /// await context.Tracing.StartChunkAsync();<br/>
+    /// await page.ClickAsync("text=Get Started");<br/>
+    /// // Everything between StartChunkAsync and StopChunkAsync will be recorded in the trace.<br/>
+    /// await context.Tracing.StopChunkAsync(new TracingStopChunkOptions<br/>
+    /// {<br/>
+    ///   Path: "trace1.zip"<br/>
+    /// });<br/>
+    /// <br/>
+    /// await context.Tracing.StartChunkAsync();<br/>
+    /// await page.GotoAsync("http://example.com");<br/>
+    /// // Save a second trace file with different actions.<br/>
+    /// await context.Tracing.StopChunkAsync(new TracingStopChunkOptions<br/>
+    /// {<br/>
+    ///   Path: "trace2.zip"<br/>
+    /// });
+    /// </code>
+    /// </summary>
+    /// <param name="options">Call options</param>
     public static void StartChunk(ITracing tracing, TracingStartChunkOptions? options = default)
     {
         tracing.StartChunkAsync(options).GetAwaiter().GetResult();
     }
 
+    /// <summary><para>Stop tracing.</para></summary>
+    /// <param name="options">Call options</param>
     public static void Stop(ITracing tracing, TracingStopOptions? options = default)
     {
         tracing.StopAsync(options).GetAwaiter().GetResult();
     }
 
+    /// <summary>
+    /// <para>
+    /// Stop the trace chunk. See <see cref="ITracing.StartChunkAsync"/> for more details
+    /// about multiple trace chunks.
+    /// </para>
+    /// </summary>
+    /// <param name="options">Call options</param>
     public static void StopChunk(ITracing tracing, TracingStopChunkOptions? options = default)
     {
         tracing.StopChunkAsync(options).GetAwaiter().GetResult();

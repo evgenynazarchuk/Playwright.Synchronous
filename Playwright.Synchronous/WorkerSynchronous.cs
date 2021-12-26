@@ -28,11 +28,49 @@ namespace Playwright.Synchronous;
 
 public static class WorkerSynchronous
 {
+    /// <summary>
+    /// <para>Returns the return value of <paramref name="expression"/>.</para>
+    /// <para>
+    /// If the function passed to the <see cref="IWorker.EvaluateAsync"/> returns a <see
+    /// cref="Task"/>, then <see cref="IWorker.EvaluateAsync"/> would wait for the promise
+    /// to resolve and return its value.
+    /// </para>
+    /// <para>
+    /// If the function passed to the <see cref="IWorker.EvaluateAsync"/> returns a non-<see
+    /// cref="Serializable"/> value, then <see cref="IWorker.EvaluateAsync"/> returns <c>undefined</c>.
+    /// Playwright also supports transferring some additional values that are not serializable
+    /// by <c>JSON</c>: <c>-0</c>, <c>NaN</c>, <c>Infinity</c>, <c>-Infinity</c>.
+    /// </para>
+    /// </summary>
+    /// <param name="expression">
+    /// JavaScript expression to be evaluated in the browser context. If it looks like a
+    /// function declaration, it is interpreted as a function. Otherwise, evaluated as an
+    /// expression.
+    /// </param>
+    /// <param name="arg">Optional argument to pass to <paramref name="expression"/>.</param>
     public static T Evaluate<T>(this IWorker worker, string expression, object? arg = null)
     {
         return worker.EvaluateAsync<T>(expression, arg).GetAwaiter().GetResult();
     }
 
+    /// <summary>
+    /// <para>Returns the return value of <paramref name="expression"/> as a <see cref="IJSHandle"/>.</para>
+    /// <para>
+    /// The only difference between <see cref="IWorker.EvaluateAsync"/> and <see cref="IWorker.EvaluateHandleAsync"/>
+    /// is that <see cref="IWorker.EvaluateHandleAsync"/> returns <see cref="IJSHandle"/>.
+    /// </para>
+    /// <para>
+    /// If the function passed to the <see cref="IWorker.EvaluateHandleAsync"/> returns
+    /// a <see cref="Task"/>, then <see cref="IWorker.EvaluateHandleAsync"/> would wait
+    /// for the promise to resolve and return its value.
+    /// </para>
+    /// </summary>
+    /// <param name="expression">
+    /// JavaScript expression to be evaluated in the browser context. If it looks like a
+    /// function declaration, it is interpreted as a function. Otherwise, evaluated as an
+    /// expression.
+    /// </param>
+    /// <param name="arg">Optional argument to pass to <paramref name="expression"/>.</param>
     public static IJSHandle EvaluateHandle(this IWorker worker, string expression, object? arg = null)
     {
         return worker.EvaluateHandleAsync(expression, arg).GetAwaiter().GetResult();

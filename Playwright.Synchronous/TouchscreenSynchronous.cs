@@ -28,6 +28,16 @@ namespace Playwright.Synchronous;
 
 public static class TouchscreenSynchronous
 {
+    /// <summary>
+    /// <para>
+    /// Dispatches a <c>touchstart</c> and <c>touchend</c> event with a single touch at
+    /// the position (<paramref name="x"/>,<paramref name="y"/>).
+    /// </para>
+    /// </summary>
+    /// <param name="x">
+    /// </param>
+    /// <param name="y">
+    /// </param>
     public static ITouchscreen Tap(ITouchscreen touchscreen, float x, float y)
     {
         touchscreen.TapAsync(x, y).GetAwaiter().GetResult();

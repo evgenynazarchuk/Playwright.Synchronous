@@ -28,11 +28,60 @@ namespace Playwright.Synchronous;
 
 public static class BrowserTypeSynchronous
 {
+    /// <summary>
+    /// <para>Returns the browser instance.</para>
+    /// <para>
+    /// You can use <paramref name="ignoreDefaultArgs"/> to filter out <c>--mute-audio</c>
+    /// from default arguments:
+    /// </para>
+    /// <code>
+    /// var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions {<br/>
+    ///     IgnoreDefaultArgs = new[] { "--mute-audio" }<br/>
+    /// })
+    /// </code>
+    /// <para>
+    /// > **Chromium-only** Playwright can also be used to control the Google Chrome or
+    /// Microsoft Edge browsers, but it works best with the version of Chromium it is bundled
+    /// with. There is no guarantee it will work with any other version. Use <paramref name="executablePath"/>
+    /// option with extreme caution.
+    /// </para>
+    /// <para>></para>
+    /// <para>
+    /// > If Google Chrome (rather than Chromium) is preferred, a <a href="https://www.google.com/chrome/browser/canary.html">Chrome
+    /// Canary</a> or <a href="https://www.chromium.org/getting-involved/dev-channel">Dev
+    /// Channel</a> build is suggested.
+    /// </para>
+    /// <para>></para>
+    /// <para>
+    /// > Stock browsers like Google Chrome and Microsoft Edge are suitable for tests that
+    /// require proprietary media codecs for video playback. See <a href="https://www.howtogeek.com/202825/what%E2%80%99s-the-difference-between-chromium-and-chrome/">this
+    /// article</a> for other differences between Chromium and Chrome. <a href="https://chromium.googlesource.com/chromium/src/+/lkgr/docs/chromium_browser_vs_google_chrome.md">This
+    /// article</a> describes some differences for Linux users.
+    /// </para>
+    /// </summary>
+    /// <param name="options">Call options</param>
     public static IBrowser Launch(this IBrowserType browserType, BrowserTypeLaunchOptions? options = null)
     {
         return browserType.LaunchAsync(options).GetAwaiter().GetResult();
     }
 
+    /// <summary>
+    /// <para>Returns the persistent browser context instance.</para>
+    /// <para>
+    /// Launches browser that uses persistent storage located at <paramref name="userDataDir"/>
+    /// and returns the only context. Closing this context will automatically close the
+    /// browser.
+    /// </para>
+    /// </summary>
+    /// <param name="userDataDir">
+    /// Path to a User Data Directory, which stores browser session data like cookies and
+    /// local storage. More details for <a href="https://chromium.googlesource.com/chromium/src/+/master/docs/user_data_dir.md#introduction">Chromium</a>
+    /// and <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Command_Line_Options#User_Profile">Firefox</a>.
+    /// Note that Chromium's user data directory is the **parent** directory of the "Profile
+    /// Path" seen at <c>chrome://version</c>. Pass an empty string to use a temporary directory
+    /// instead.
+    /// </param>
+    /// <param name="options">Call options</param>
     public static IBrowserContext LaunchPersistentContext(this IBrowserType browserType, string userDataDir, BrowserTypeLaunchPersistentContextOptions? options = null)
     {
         return browserType.LaunchPersistentContextAsync(userDataDir, options).GetAwaiter().GetResult();

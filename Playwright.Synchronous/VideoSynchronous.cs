@@ -28,16 +28,32 @@ namespace Playwright.Synchronous;
 
 public static class VideoSynchronous
 {
+    /// <summary><para>Deletes the video file. Will wait for the video to finish if necessary.</para></summary>
     public static void Delete(this IVideo video)
     {
         video.DeleteAsync().GetAwaiter().GetResult();
     }
 
+    /// <summary>
+    /// <para>
+    /// Returns the file system path this video will be recorded to. The video is guaranteed
+    /// to be written to the filesystem upon closing the browser context. This method throws
+    /// when connected remotely.
+    /// </para>
+    /// </summary>
     public static string Path(this IVideo video)
     {
         return video.PathAsync().GetAwaiter().GetResult();
     }
 
+    /// <summary>
+    /// <para>
+    /// Saves the video to a user-specified path. It is safe to call this method while the
+    /// video is still in progress, or after the page has closed. This method waits until
+    /// the page is closed and the video is fully saved.
+    /// </para>
+    /// </summary>
+    /// <param name="path">Path where the video should be saved.</param>
     public static void SaveAs(this IVideo video, string path)
     {
         video.SaveAsAsync(path).GetAwaiter().GetResult();

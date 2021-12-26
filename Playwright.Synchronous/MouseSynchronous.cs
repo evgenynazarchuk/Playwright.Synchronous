@@ -28,36 +28,77 @@ namespace Playwright.Synchronous;
 
 public static class MouseSynchronous
 {
+    /// <summary>
+    /// <para>
+    /// Shortcut for <see cref="IMouse.MoveAsync"/>, <see cref="IMouse.DownAsync"/>, <see
+    /// cref="IMouse.UpAsync"/>.
+    /// </para>
+    /// </summary>
+    /// <param name="x">
+    /// </param>
+    /// <param name="y">
+    /// </param>
+    /// <param name="options">Call options</param>
     public static IMouse Click(this IMouse mouse, float x, float y, MouseClickOptions? options = default)
     {
         mouse.ClickAsync(x, y, options).GetAwaiter().GetResult();
         return mouse;
     }
 
+    /// <summary>
+    /// <para>
+    /// Shortcut for <see cref="IMouse.MoveAsync"/>, <see cref="IMouse.DownAsync"/>, <see
+    /// cref="IMouse.UpAsync"/>, <see cref="IMouse.DownAsync"/> and <see cref="IMouse.UpAsync"/>.
+    /// </para>
+    /// </summary>
+    /// <param name="x">
+    /// </param>
+    /// <param name="y">
+    /// </param>
+    /// <param name="options">Call options</param>
     public static IMouse DblClick(this IMouse mouse, float x, float y, MouseDblClickOptions? options = default)
     {
         mouse.DblClickAsync(x, y, options).GetAwaiter().GetResult();
         return mouse;
     }
 
+    /// <summary><para>Dispatches a <c>mousedown</c> event.</para></summary>
+    /// <param name="options">Call options</param>
     public static IMouse Down(this IMouse mouse, MouseDownOptions? options = default)
     {
         mouse.DownAsync(options).GetAwaiter().GetResult();
         return mouse;
     }
 
+    /// <summary><para>Dispatches a <c>mousemove</c> event.</para></summary>
+    /// <param name="x">
+    /// </param>
+    /// <param name="y">
+    /// </param>
+    /// <param name="options">Call options</param>
     public static IMouse Move(this IMouse mouse, float x, float y, MouseMoveOptions? options = default)
     {
         mouse.MoveAsync(x, y, options).GetAwaiter().GetResult();
         return mouse;
     }
 
+    /// <summary><para>Dispatches a <c>mouseup</c> event.</para></summary>
+    /// <param name="options">Call options</param>
     public static IMouse Up(this IMouse mouse, MouseUpOptions? options = default)
     {
         mouse.UpAsync(options).GetAwaiter().GetResult();
         return mouse;
     }
 
+    /// <summary><para>Dispatches a <c>wheel</c> event.</para></summary>
+    /// <remarks>
+    /// <para>
+    /// Wheel events may cause scrolling if they are not handled, and this method does not
+    /// wait for the scrolling to finish before returning.
+    /// </para>
+    /// </remarks>
+    /// <param name="deltaX">Pixels to scroll horizontally.</param>
+    /// <param name="deltaY">Pixels to scroll vertically.</param>
     public static IMouse Wheel(this IMouse mouse, float deltaX, float deltaY)
     {
         mouse.WheelAsync(deltaX, deltaY).GetAwaiter().GetResult();

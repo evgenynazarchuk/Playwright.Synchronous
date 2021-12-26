@@ -28,11 +28,17 @@ namespace Playwright.Synchronous;
 
 public static class DialogSynchronous
 {
+    /// <summary><para>Returns when the dialog has been accepted.</para></summary>
+    /// <param name="promptText">
+    /// A text to enter in prompt. Does not cause any effects if the dialog's <c>type</c>
+    /// is not prompt. Optional.
+    /// </param>
     public static void Accept(this IDialog dialoag, string? promptText = default)
     {
         dialoag.AcceptAsync(promptText).GetAwaiter().GetResult();
     }
 
+    /// <summary><para>Returns when the dialog has been dismissed.</para></summary>
     public static void Dismiss(this IDialog dialoag)
     {
         dialoag.DismissAsync().GetAwaiter().GetResult();

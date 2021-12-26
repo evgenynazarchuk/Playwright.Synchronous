@@ -28,31 +28,57 @@ namespace Playwright.Synchronous;
 
 public static class DownloadSynchronous
 {
+    /// <summary>
+    /// <para>
+    /// Cancels a download. Will not fail if the download is already finished or canceled.
+    /// Upon successful cancellations, <c>download.failure()</c> would resolve to <c>'canceled'</c>.
+    /// </para>
+    /// </summary>
     public static void Cancel(this IDownload download)
     {
         download.CancelAsync().GetAwaiter().GetResult();
     }
 
+    /// <summary><para>Returns readable stream for current download or <c>null</c> if download failed.</para></summary>
     public static Stream? CreateReadStream(this IDownload download)
     {
         return download.CreateReadStreamAsync().GetAwaiter().GetResult();
     }
 
+    /// <summary><para>Deletes the downloaded file. Will wait for the download to finish if necessary.</para></summary>
     public static void Delete(this IDownload download)
     {
         download.DeleteAsync().GetAwaiter().GetResult();
     }
 
+    /// <summary><para>Returns download error if any. Will wait for the download to finish if necessary.</para></summary>
     public static string? Failure(this IDownload download)
     {
         return download.FailureAsync().GetAwaiter().GetResult();
     }
 
+    /// <summary>
+    /// <para>
+    /// Returns path to the downloaded file in case of successful download. The method will
+    /// wait for the download to finish if necessary. The method throws when connected remotely.
+    /// </para>
+    /// <para>
+    /// Note that the download's file name is a random GUID, use <see cref="IDownload.SuggestedFilename"/>
+    /// to get suggested file name.
+    /// </para>
+    /// </summary>
     public static string? Path(this IDownload download)
     {
         return download.PathAsync().GetAwaiter().GetResult();
     }
 
+    /// <summary>
+    /// <para>
+    /// Copy the download to a user-specified path. It is safe to call this method while
+    /// the download is still in progress. Will wait for the download to finish if necessary.
+    /// </para>
+    /// </summary>
+    /// <param name="path">Path where the download should be copied.</param>
     public static void SaveAs(this IDownload download, string path)
     {
         download.SaveAsAsync(path).GetAwaiter().GetResult();
